@@ -48,7 +48,6 @@ class TestRoutes(TestCase):
             (self.reader, HTTPStatus.NOT_FOUND),
         )
         for user, status in users_statuses:
-            # Логиним пользователя в клиенте:
             self.client.force_login(user)
             urls = (
                 ('notes:detail'),
