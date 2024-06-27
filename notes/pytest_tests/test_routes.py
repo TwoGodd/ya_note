@@ -73,6 +73,7 @@ def test_pages_availability_for_different_users(
 )
 # Передаём в тест анонимный клиент, name проверяемых страниц и args:
 def test_redirects(client, name, args):
+    """Тестирование редиректов"""
     login_url = reverse('users:login')
     # Теперь не надо писать никаких if и можно обойтись одним выражением.
     url = reverse(name, args=args)
