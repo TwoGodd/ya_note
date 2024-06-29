@@ -37,7 +37,7 @@ def test_notes_list_for_different_users(
     )
 )
 def test_pages_contains_form(author_client, name, args):
-    """Тест «есть ли форма в контексте?»"""
+    """Тестируем наличие формы создания и редактирования"""
     # Формируем URL.
     url = reverse(name, args=args)
     # Запрашиваем нужную страницу:
