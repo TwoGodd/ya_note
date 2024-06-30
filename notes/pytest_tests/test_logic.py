@@ -117,7 +117,7 @@ def test_author_can_delete_note(author_client, slug_for_args):
 
 
 def test_other_user_cant_delete_note(not_author_client, slug_for_args):
-    """Тестирование редактирования заметки автором"""
+    """Тестирование редактирования заметки не автором"""
     url = reverse('notes:delete', args=slug_for_args)
     response = not_author_client.post(url)
     assert response.status_code == HTTPStatus.NOT_FOUND

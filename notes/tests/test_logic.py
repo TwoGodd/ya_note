@@ -119,7 +119,7 @@ class TestEditLogic(TestCase):
         self.assertEqual(Note.objects.count(), 0)
 
     def test_other_user_cant_delete_note(self):
-        """Тестирование редактирования заметки автором"""
+        """Тестирование редактирования заметки не автором"""
         url = reverse('notes:delete', args=(self.note.slug,))
         response = self.auth_reader.post(url)
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
