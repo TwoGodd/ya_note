@@ -83,7 +83,12 @@ class TestEditLogic(TestCase):
         url = reverse('notes:add')
         self.form_data['slug'] = self.note.slug
         response = self.auth_author.post(url, data=self.form_data)
-        self.assertFormError(response, 'form', 'slug', errors=(self.note.slug + WARNING))
+        self.assertFormError(
+            response,
+            'form',
+            'slug',
+            errors=(self.note.slug + WARNING)
+        )
         self.assertEqual(Note.objects.count(), 1)
 
     def test_author_can_edit_note(self):
