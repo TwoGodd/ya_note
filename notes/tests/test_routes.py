@@ -21,11 +21,6 @@ class TestRoutes(TestCase):
             author=cls.author,
         )
 
-    def test_successful_creation(self):
-        """Функция проверки создания заметки"""
-        notes_count = Note.objects.count()
-        self.assertEqual(notes_count, 1)
-
     def test_pages_availability(self):
         """Функция проверки доступов к страницам"""
         urls = (
@@ -39,6 +34,15 @@ class TestRoutes(TestCase):
                 url = reverse(name, args=args)
                 response = self.client.get(url)
                 self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_pages_availability_for_auth_user(self):
+        """Тестирование доступности страниц для авторизованного пользователя"""
+        urls = ('notes:list', 'notes:add', 'notes:success')
+        self.client.force_login(self.author)
+        for name in urls:
+            url = reverse(name)
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_availability_for_note_edit_and_delete(self):
         """Тестирование доступности страниц для авторизованного пользователя"""
