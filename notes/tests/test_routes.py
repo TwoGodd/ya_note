@@ -29,27 +29,23 @@ class TestRoutes(TestBase):
     def test_availability(self):
         """Тестирование доступности страниц"""
         users_statuses = (
-            (self.url_notes_home, self.client, self.http_status_ok),
-            (self.url_users_login, self.client, self.http_status_ok),
-            (self.url_users_logout, self.client, self.http_status_ok),
-            (self.url_users_signup, self.client, self.http_status_ok),
-            (self.url_notes_add, self.auth_author, self.http_status_ok),
-            (self.url_notes_list, self.auth_author, self.http_status_ok),
-            (self.url_notes_success, self.auth_author, self.http_status_ok),
-            (self.url_notes_detail, self.auth_author, self.http_status_ok),
-            (self.url_notes_detail, self.auth_reader, self.http_status_not_found),
-            (self.url_notes_edit, self.auth_author, self.http_status_ok),
-            (self.url_notes_edit, self.auth_reader, self.http_status_not_found),
-            (self.url_notes_delete, self.auth_author, self.http_status_ok),
-            (self.url_notes_delete, self.auth_reader, self.http_status_not_found),
+            (self.url_notes_home, self.client, self.http_ok),
+            (self.url_users_login, self.client, self.http_ok),
+            (self.url_users_logout, self.client, self.http_ok),
+            (self.url_users_signup, self.client, self.http_ok),
+            (self.url_notes_add, self.auth_author, self.http_ok),
+            (self.url_notes_list, self.auth_author, self.http_ok),
+            (self.url_notes_success, self.auth_author, self.http_ok),
+            (self.url_notes_detail, self.auth_author, self.http_ok),
+            (self.url_notes_detail, self.auth_reader, self.http_not_found),
+            (self.url_notes_edit, self.auth_author, self.http_ok),
+            (self.url_notes_edit, self.auth_reader, self.http_not_found),
+            (self.url_notes_delete, self.auth_author, self.http_ok),
+            (self.url_notes_delete, self.auth_reader, self.http_not_found),
         )
         for url, user, status in users_statuses:
             with self.subTest():
-                print(url)
-                print(user)
                 response = user.get(url)
-                print(f'{response.status_code} == {status}')
-                print('------------')
                 self.assertEqual(response.status_code, status)
 
     def test_redirect(self):
