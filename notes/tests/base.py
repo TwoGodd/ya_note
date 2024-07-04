@@ -12,11 +12,10 @@ class TestBase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.author = User.objects.create(username='Лев Толстой')
-        cls.client = Client()
-        cls.auth_author = cls.client
+        cls.auth_author = Client()
         cls.auth_author.force_login(cls.author)
         cls.reader = User.objects.create(username='Читатель простой')
-        cls.auth_reader = cls.client
+        cls.auth_reader = Client()
         cls.auth_reader.force_login(cls.reader)
         cls.note = Note.objects.create(
             title='Заголовок',
@@ -24,8 +23,8 @@ class TestBase(TestCase):
             slug='note-slug',
             author=cls.author,
         )
-        cls.http_status_ok = 200
-        cls.http_status_not_found = 404
+        cls.http_ok = 200
+        cls.http_not_found = 404
         cls.url_notes_home = reverse('notes:home')
         cls.url_notes_list = reverse('notes:list')
         cls.url_notes_detail = reverse('notes:detail', args=(cls.note.slug,))
