@@ -1,30 +1,7 @@
-from django.urls import reverse
 from notes.tests.base import TestBase
 
 
 class TestRoutes(TestBase):
-
-    # def test_pages_availability(self):
-    #     """Функция проверки доступов к страницам"""
-    #     urls = (
-    #         ('notes:home', None),
-    #         ('users:login', None),
-    #         ('users:logout', None),
-    #         ('users:signup', None),
-    #     )
-    #     for name, args in urls:
-    #         with self.subTest(name=name):
-    #             url = reverse(name, args=args)
-    #             response = self.client.get(url)
-    #             self.assertEqual(response.status_code, self.http_status_ok)
-
-    # def test_pages_availability_for_auth_user(self):
-    #     """Тестирование доступности страниц для авторизованного пользователя"""
-    #     urls = ('notes:list', 'notes:add', 'notes:success')
-    #     for name in urls:
-    #         url = reverse(name)
-    #         response = self.auth_author.get(url)
-    #         self.assertEqual(response.status_code, self.http_status_ok)
 
     def test_availability(self):
         """Тестирование доступности страниц"""
