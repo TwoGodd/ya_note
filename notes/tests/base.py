@@ -23,6 +23,11 @@ class TestBase(TestCase):
             slug='note-slug',
             author=cls.author,
         )
+        cls.form_data = {
+            'title': 'Новый заголовок',
+            'text': 'Новый текст',
+            'slug': 'new-slug'
+        }
         cls.http_ok = 200
         cls.http_not_found = 404
         cls.url_notes_home = reverse('notes:home')
